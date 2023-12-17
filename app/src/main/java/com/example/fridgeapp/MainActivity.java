@@ -1,6 +1,8 @@
 package com.example.fridgeapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,9 +14,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.fridgeapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 
     private ActivityMainBinding binding;
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        mButton = findViewById(R.id.add);
+        mButton.setOnClickListener(this);
+
     }
 
     public static String Stability(int time) {
@@ -40,4 +46,10 @@ public class MainActivity extends AppCompatActivity {
         return stab;
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.add) {
+            System.out.println("Pressed");
+        }
+    }
 }
